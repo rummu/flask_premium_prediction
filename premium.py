@@ -33,78 +33,78 @@ def test():
 
 
      #Request data and decode
-     data = request.form['user_data']
-     data = json.loads(data)
+     # data = request.form['user_data']
+     # data = json.loads(data)
 
-     user = pd.DataFrame()
+     # user = pd.DataFrame()
 
-     try: 
-          user["gender"] = [data['gender']]
-     except:
-          user['gender'] = [np.nan]
+     # try: 
+     #      user["gender"] = [data['gender']]
+     # except:
+     #      user['gender'] = [np.nan]
      
-     try: 
-          user["age"] = [data['age']]
-     except:
-          user['age'] = [np.nan]
+     # try: 
+     #      user["age"] = [data['age']]
+     # except:
+     #      user['age'] = [np.nan]
 
-     try: 
-          user["marital_status"] = [data['marital_status']]
-     except:
-          user['marital_status'] = [np.nan]
+     # try: 
+     #      user["marital_status"] = [data['marital_status']]
+     # except:
+     #      user['marital_status'] = [np.nan]
      
-     try: 
-          user["ads"] = [data['ads']]
-     except:
-          user['ads'] = [np.nan]
+     # try: 
+     #      user["ads"] = [data['ads']]
+     # except:
+     #      user['ads'] = [np.nan]
      
-     try: 
-          user["present_state"] = [data['present_state']]
-     except:
-          user['present_state'] = [np.nan]
+     # try: 
+     #      user["present_state"] = [data['present_state']]
+     # except:
+     #      user['present_state'] = [np.nan]
 
-     try: 
-          user["highest_education"] = [data['highest_education']]
-     except:
-          user['highest_education'] = [np.nan]
+     # try: 
+     #      user["highest_education"] = [data['highest_education']]
+     # except:
+     #      user['highest_education'] = [np.nan]
 
-     try: 
-          user["occupation"] = [data['occupation']]
-     except:
-          user['occupation'] = [np.nan]
+     # try: 
+     #      user["occupation"] = [data['occupation']]
+     # except:
+     #      user['occupation'] = [np.nan]
 
-     try: 
-          user["employed"] = [data['employed']]
-     except:
-          user['employed'] = [np.nan]
+     # try: 
+     #      user["employed"] = [data['employed']]
+     # except:
+     #      user['employed'] = [np.nan]
 
-     try: 
-          user["caste"] = [data['caste']]
-     except:
-          user['caste'] = [np.nan]
+     # try: 
+     #      user["caste"] = [data['caste']]
+     # except:
+     #      user['caste'] = [np.nan]
 
-     try: 
-          user["sect"] = [data['sect']]
-     except:
-          user['sect'] = [np.nan]
+     # try: 
+     #      user["sect"] = [data['sect']]
+     # except:
+     #      user['sect'] = [np.nan]
 
-     try: 
-          user["family_type"] = [data['family_type']]
-     except:
-          user['family_type'] = [np.nan]
+     # try: 
+     #      user["family_type"] = [data['family_type']]
+     # except:
+     #      user['family_type'] = [np.nan]
 
-     try: 
-          user["platform"] = [data['platform']]
-     except:
-          user['platform'] = [np.nan]
+     # try: 
+     #      user["platform"] = [data['platform']]
+     # except:
+     #      user['platform'] = [np.nan]
 
-     try: 
-          user["income_rs"] = [data['income_rs']]
-     except:
-          user['income_rs'] = [np.nan]
+     # try: 
+     #      user["income_rs"] = [data['income_rs']]
+     # except:
+     #      user['income_rs'] = [np.nan]
 
 
-     # user = pd.read_csv('one_user_data.csv',encoding='utf-8')
+     user = pd.read_csv('one_user_data.csv',encoding='utf-8')
      # print(user.columns)
 
 
