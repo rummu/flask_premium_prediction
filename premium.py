@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 import json
 from flask_cors import CORS
+import sklearn
 
 import pandas as pd
 import numpy as np
