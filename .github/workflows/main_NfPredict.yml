@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'NfPredict'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_bf87c03fec064a52962ab8d327ba4d4b }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0455911A0F7945E9AC916B0C6E0F3441 }}
