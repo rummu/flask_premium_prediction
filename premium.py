@@ -5,6 +5,8 @@ import pickle
 import json
 from flask_cors import CORS
 import sklearn
+from sklearn.preprocessing import OneHotEncoder
+
 
 import pandas as pd
 import numpy as np
