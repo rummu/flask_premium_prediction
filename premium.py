@@ -4,6 +4,8 @@ import numpy as np
 import pickle
 import json
 from flask_cors import CORS
+import time
+
 
 import pandas as pd
 import numpy as np
@@ -46,7 +48,7 @@ def test():
      try: 
           user["age"] = [data['age']]
      except:
-          user['age'] = [np.nan]
+          user['age'] = [0]
 
      try: 
           user["marital_status"] = [data['marital_status']]
@@ -302,20 +304,22 @@ def test():
      #      encoder_model = pickle.load(f)
 
 
-     # # print(len(encoder_model.transform(user[columns_to_encode]).toarray()[0]))
+     # # # print(len(encoder_model.transform(user[columns_to_encode]).toarray()[0]))
 
-     # one_hot_df =  one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
-     # # print(one_hot_df.columns)
-     # one_hot_user = pd.DataFrame()
-     # one_hot_user[one_hot_df.columns] = encoder_model.transform(user[columns_to_encode]).toarray()
+     # # one_hot_df =  one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
+     # # # print(one_hot_df.columns)
+     # # one_hot_user = pd.DataFrame()
+     # # one_hot_user[one_hot_df.columns] = encoder_model.transform(user[columns_to_encode]).toarray()
 
      columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                      'caste','sect','family_type','platform']
+     
+     
+     one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
-     one_hot_df = pd.read_csv('one_hot_data_premium_null.csv',encoding='utf-8')
 
-     print(user.columns)
-
+     # print(user.columns)
+     
      # load the encoder object from file
      with open('encoder.pkl', 'rb') as f:
                encoder_model = pickle.load(f)
@@ -333,7 +337,6 @@ def test():
 
 
 
-
      lst_age=[]
      for i in user['age']:
          lst_age.append(i)
@@ -344,7 +347,9 @@ def test():
          lst_income_rs.append(i)
      one_hot_df['income_rs'] = lst_income_rs
 
-     # print(one_hot_df)
+     # # print(one_hot_df)
+
+    
 
 
 
@@ -352,9 +357,11 @@ def test():
      with open('model.pkl', 'rb') as f:
           model = pickle.load(f)
 
+
      # print(model.predict_proba(one_hot_df))
 
      return str(model.predict_proba(one_hot_df)[0][1])
+     
 
 
 
