@@ -115,6 +115,8 @@ def test():
      try: 
           if(data["employed"]==""):
                user["employed"] = [np.nan]
+          elif(data['employed']=="Government/Public Sector"):
+               user['employed'] = ["Government/Public Sect"]
           else:
               user["employed"] = [data['employed']]
      except:
@@ -371,7 +373,7 @@ def test():
      one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
 
-     # print(user.columns)
+     print(user)
      
      # load the encoder object from file
      with open('encoder.pkl', 'rb') as f:
