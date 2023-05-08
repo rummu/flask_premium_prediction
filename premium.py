@@ -36,7 +36,7 @@ def test():
      #Request data and decode
      data = request.form['user_data']
      data = json.loads(data)
-     print(data['member_id'])
+     # print(data['member_id'])
 
      user = pd.DataFrame()
 
@@ -159,6 +159,19 @@ def test():
                user["income_rs"] = [0]
           else:
               user["income_rs"] = [data['income_rs']]
+              #Income_rs
+              def income(x):
+                    if x is np.nan:
+                         return x
+                    elif x =='No Income':
+                         return 0
+                    else:
+                         if x.split(' ')[1]=='0':
+                              return int(x.split(' ')[3])
+                         return int(x.split(' ')[1])
+
+     
+              user['income_rs'] = income(user['income_rs'][0])
      except:
           user['income_rs'] = [0]
      
@@ -171,19 +184,7 @@ def test():
      
 
 
-     #Income_rs
-     def income(x):
-          if x is np.nan:
-               return x
-          elif x =='No Income':
-               return 0
-          else:
-               if x.split(' ')[1]=='0':
-                    return int(x.split(' ')[3])
-               return int(x.split(' ')[1])
-
      
-     user['income_rs'] = income(user['income_rs'][0])
 
 
 
@@ -214,24 +215,28 @@ def test():
 
 
      #States
-     other_states = ['Tripura','Manipur','Lakshadweep','Nagaland','Andaman And Nicobar','Arunachal Pradesh','Mizoram',
+     other_states = ['Tripura','Manipur','Lakshadweep','Nagaland','Andaman and Nicobar Islands','Arunachal Pradesh','Mizoram',
                  'Dadra and Nagar Haveli','Sikkim','Himachal Pradesh','Meghalaya','Chandigarh','Daman and Diu','Pogradec']
 
      if user['present_state'][0] in other_states:
                user['present_state'] = ['Other_states']
+     else:
+          user['present_state'] = ['Other_states']
+
 
 
      #Education
-     e1=['Doctorate of Medicine ', 'M.P.T.', 'Master of Surgery - M.', 'L.L.M.', 'M.D.S.', 'Chartered Accountant -', 'Doctor of Medicine - M', 'Doctor of Philosophy -', 'M.Tech / M.E' ]
+     
+     e1=['Doctor of Medicine - M.D.', 'M.P.T.', 'Master of Surgery - M.S.', 'L.L.M.', 'M.D.S.', 'Chartered Accountant - CA', 'Doctorate of Medicine - D.M.', 'Doctor of Philosophy - Ph.D. ', 'M.Tech / M.E' ]
 
-     e2 = ['M.Des./ M.Design.', 'Master of Library Scie', 'M.Com.', 'Master of Arts - M.A.', 'M.Phil. ', 'M.B.A.', 'Master of Education - ', 'Master of Fine Arts - ', 
-              'B.Tech / B.E.', 'Master of Chirurgiae -', 'M.C.A.', 'B.H.M.S', 'ICWA', 'M.Sc.', 'M.Pharm ', 'M.M.C / M.M.M / M.J.M.', 'B.U.M.S', 'B.D.S.', 'M.B.B.S.', 'M.Arch.']
+     e2 = ['M.Des./ M.Design.', 'Master of Library Science', 'M.Com.', 'Master of Arts - M.A.', 'M.Phil. ', 'M.B.A.', 'Master of Education - M.Ed.', 'Master of Fine Arts - MFA / MVA', 
+              'B.Tech / B.E.', 'Master of Chirurgiae - M.Ch.', 'M.C.A.', 'B.H.M.S', 'ICWA', 'M.Sc.', 'M.Pharm ', 'M.M.C / M.M.M / M.J.M.C', 'B.U.M.S', 'B.D.S.', 'M.B.B.S.', 'M.Arch.']
+     
+     e3=['Doctor of Pharmacy - Pharm.D ', 'BVSc.', 'M.S. (Engineering)', 'CS', 'Master of Physical Education', 'B.Ed', 'B.IT', 'CFA', 'B.C.A.', 'B.Com.', 'B.Sc. - Bachelor of Science', 'B.P.T.', 'Bachelor of Law - L.L.B.', 'B.Des. / B.D.', 'M.D. (Homoeopathy)', 'Master of Social Work / M.A. Social Work']
 
-     e3=['Doctor of Pharmacy - P', 'BVSc.', 'M.S. (Engineering)', 'CS', 'Master of Physical Edu', 'B.Ed', 'B.IT', 'CFA', 'B.C.A.', 'B.Com.', 'B.Sc. - Bachelor of Sc', 'B.P.T.', 'Bachelor of Law - L.L.', 'B.Des. / B.D.', 'M.D. (Homoeopathy)', 'Master of Social Work ']
+     e4=['B.A.M.S.', 'B.A. ', 'Other', 'B.Arch', 'Bachelor of Nursing ', 'B.Pharm / B.Pharma.', 'Bachelor of Library Science', 'Trade School', 'BHM', 'B.B.A.', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc.', 'M.Sc. (Agriculture)', 'Diploma']
 
-     e4=['B.A.M.S.', 'B.A. ', 'Other', 'B.Arch', 'Bachelor of Nursing ', 'B.Pharm / B.Pharma.', 'Bachelor of Library Sc', 'Trade School', 'BHM', 'B.B.A.', 'Bachelor of Fine Arts ', 'B.Sc.', 'M.Sc. (Agriculture)', 'Diploma']
-
-     e5=['High School', 'M.V.Sc.', 'D.Pharma', 'Bachelor of Physical E', 'B.M.C. / B.M.M./ B.J.M', 'Bachelor of Social Wor', 'Aalim Hafiz / Alaima H', 'Intermediate (12th)']
+     e5=['High School', 'M.V.Sc.', 'D.Pharma', 'Bachelor of Physical Education', 'B.M.C. / B.M.M./ B.J.M.C.', 'Bachelor of Social Work', 'Aalim Hafiz / Alaima Hafiza', 'Intermediate (12th)']
 
      if user['highest_education'][0] in e1:
                user['highest_education'] = ['Education_category_1']
@@ -247,6 +252,9 @@ def test():
 
      elif user['highest_education'][0] in e5:
                user['highest_education'] = ['Education_category_5']
+     else:
+          user['highest_education'] = [np.nan]
+
 
      #print(user['highest_education'][0])
 
@@ -260,17 +268,17 @@ def test():
 
      #Occupation
 
-     o1=['VP/ AVP/ GM/ DGM', 'Research Professional', 'Surgeon', 'Consultant', 'CxO/ Chairman/ Preside', 'Professor/Lecturer', 'Software Professional', 'Scientist', 'Program Manager', 'Research Assistant', 'Subject Matter Expert']
+     o1=['VP/ AVP/ GM/ DGM', 'Research Professional', 'Surgeon', 'Consultant', 'CxO/ Chairman/ President/ Director', 'Professor/Lecturer', 'Software Professional', 'Scientist', 'Program Manager', 'Research Assistant', 'Subject Matter Expert']
 
-     o2=['Dentist', 'Cyber/Network Security', 'Finance Professional', 'Engineer', 'HR Professional', 'Physiotherapist', 'Quality Assurance Engi', 'Sr. Manager/ Manager', 'Operations Management', 'Doctor', 'Science Professional']
+     o2=['Dentist', 'Cyber/Network Security', 'Finance Professional', 'Engineer', 'HR Professional', 'Physiotherapist', 'Quality Assurance Engineer', 'Sr. Manager/ Manager', 'Operations Management', 'Doctor', 'Science Professional']
 
-     o3=['Project Lead - IT', 'Business Owner/ Entrep', 'Teacher', 'Project Manager - IT', 'Corporate Communicatio', 'Chartered Accountant', 'Medical/ Healthcare Pr', 'Lawyer &amp; Legal Pro', 'Navy', 'UI/UX designer', 'Educational Institutio', 'Project Manager - Non ', 'Auditor', 'Non – IT Engineer', 'Mariner', 'Psychologist', 'Corporate Planning', 'Analyst', 'Education Professional']
+     o3=['Project Lead - IT', 'Business Owner/ Entrepreneur', 'Teacher', 'Project Manager - IT', 'Corporate Communication', 'Chartered Accountant', 'Medical/ Healthcare Professional', 'Lawyer & Legal Professional', 'Navy', 'UI/UX designer', 'Educational Institution Owner', 'Project Manager - Non IT', 'Auditor', 'Non – IT Engineer', 'Mariner', 'Psychologist', 'Corporate Planning', 'Analyst', 'Education Professional']
 
-     o4=['Hardware/Telecom Engin', 'Sales Professional', 'Security Professional', 'Flight Attendant', 'Not working', 'Fashion Designer', 'Product manager', 'Interior Designer', 'Beautician', 'Hotels/Hospitality Pro', 'Social Services/ NGO/ ', 'Businessperson', 'Police', 'Others', 'Paramedic', 'Banking Professional', 'Airline Professional', 'BPO/ITes Professional', 'Defence Services', 'Marketing Professional', 'Architect']
+     o4=['Hardware/Telecom Engineer', 'Sales Professional', 'Security Professional', 'Flight Attendant', 'Not working', 'Fashion Designer', 'Product manager', 'Interior Designer', 'Beautician', 'Hotels/Hospitality Professional', 'Social Services/ NGO/ Volunteer', 'Businessperson', 'Police', 'Others', 'Paramedic', 'Banking Professional', 'Airline Professional', 'BPO/ITes Professional', 'Defence Services', 'Marketing Professional', 'Architect']
 
-     o5=['Media Professional', 'Travel Professional', 'Secretary/Front Office', 'Journalist', 'Nurse', 'Writer', 'Electronics Engineer', 'Web/Graphic Designer', 'PR Professional', 'Pharmacist', 'Advertising Profession', 'Agriculture Profession', 'Accounting Professiona', 'Student', 'Customer Service', 'Librarian', 'Army', 'Artist']
+     o5=['Media Professional', 'Travel Professional', 'Secretary/Front Office', 'Journalist', 'Nurse', 'Writer', 'Electronics Engineer', 'Web/Graphic Designer', 'PR Professional', 'Pharmacist', 'Advertising Professional', 'Agriculture Professional', 'Accounting Professional', 'Student', 'Customer Service', 'Librarian', 'Army', 'Artist']
 
-     o6=['Retired', 'Operator/Technician', 'Broker', 'Veterinary Doctor', 'Air Force', 'Film/ Entertainment Pr', 'Animator', 'Sportsperson', 'Looking for job', 'Civil Services (IAS/ I', 'Agent', 'Farming', 'Pilot', 'Law Enforcement Office', 'Merchant Naval Officer', 'Fitness Professional', 'Clerk', 'Actor/Model', 'Singer', 'Politician', 'Admin Professional']
+     o6=['Retired', 'Operator/Technician', 'Broker', 'Veterinary Doctor', 'Air Force', 'Film/ Entertainment Professional', 'Animator', 'Sportsperson', 'Looking for job', 'Civil Services (IAS/ IPS/ IRS/ IES/ IFS)', 'Agent', 'Farming', 'Pilot', 'Law Enforcement Officer', 'Merchant Naval Officer', 'Fitness Professional', 'Clerk', 'Actor/Model', 'Singer', 'Politician', 'Admin Professional']
 
 
      if user['occupation'][0] in o1:
@@ -305,7 +313,7 @@ def test():
 
      c2=['Rayeen', 'Zaidi', 'Mughal', 'Farooqui', 'Ansari', 'Siddique', 'Mansoori', 'No Caste', 'Hawrai']
 
-     c3=['Salmani', 'Muslim Choudhary', 'Malik', 'Dawoodi Bohra', 'Usmani', 'Shah', 'Rehman', 'Lababin', 'Gaddi', 'Others', 'Naqvi', 'Punjabi Muslim', 'Shafi', 'Muslim Rajput', 'Idrisi', 'Turq or Turk', 'Quraishi', 'Saifi', 'Alvi']
+     c3=['Salmani', 'Muslim Choudhary', 'Malik', 'Dawoodi Bohra', 'Usmani', 'Shah', 'Rehman', 'Lababin', 'Gaddi', 'Other', 'Naqvi', 'Punjabi Muslim', 'Shafi', 'Muslim Rajput', 'Idrisi', 'Turq or Turk', 'Quraishi', 'Saifi', 'Alvi']
 
      c4=['Abdal', 'Kunwar', 'Tyagi', 'Gujrati', 'Bengali', 'Khwaja', 'Qasmi', 'Nomani', 'Abbasi', 'Sunni', 'Bhat', 'Muslim Rajput Thakur', 'Ali', 'Fatmi', 'Mewati', 'Muslim Chauhan', 'Ahmad or Ahmed']
 
@@ -339,7 +347,6 @@ def test():
      else:
           user['platform'] = ['Other_platforms']
 
-     print(user)
 
 
      # print(user['highest_education'])
@@ -373,7 +380,7 @@ def test():
      one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
 
-     print(user)
+     # print(user)
      
      # load the encoder object from file
      with open('encoder.pkl', 'rb') as f:
@@ -414,7 +421,7 @@ def test():
 
 
      # print(model.predict_proba(one_hot_df))
-     print(one_hot_df.columns)
+     # print(one_hot_df.columns)
 
      return str(model.predict_proba(one_hot_df)[0][1])
      
