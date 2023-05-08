@@ -227,7 +227,7 @@ def test():
 
      e3=['Doctor of Pharmacy - P', 'BVSc.', 'M.S. (Engineering)', 'CS', 'Master of Physical Edu', 'B.Ed', 'B.IT', 'CFA', 'B.C.A.', 'B.Com.', 'B.Sc. - Bachelor of Sc', 'B.P.T.', 'Bachelor of Law - L.L.', 'B.Des. / B.D.', 'M.D. (Homoeopathy)', 'Master of Social Work ']
 
-     e4=['B.A.M.S.', 'B.A. ', 'Others', 'B.Arch', 'Bachelor of Nursing ', 'B.Pharm / B.Pharma.', 'Bachelor of Library Sc', 'Trade School', 'BHM', 'B.B.A.', 'Bachelor of Fine Arts ', 'B.Sc.', 'M.Sc. (Agriculture)', 'Diploma']
+     e4=['B.A.M.S.', 'B.A. ', 'Other', 'B.Arch', 'Bachelor of Nursing ', 'B.Pharm / B.Pharma.', 'Bachelor of Library Sc', 'Trade School', 'BHM', 'B.B.A.', 'Bachelor of Fine Arts ', 'B.Sc.', 'M.Sc. (Agriculture)', 'Diploma']
 
      e5=['High School', 'M.V.Sc.', 'D.Pharma', 'Bachelor of Physical E', 'B.M.C. / B.M.M./ B.J.M', 'Bachelor of Social Wor', 'Aalim Hafiz / Alaima H', 'Intermediate (12th)']
 
@@ -337,6 +337,8 @@ def test():
      else:
           user['platform'] = ['Other_platforms']
 
+     print(user)
+
 
      # print(user['highest_education'])
      # print(user.columns)
@@ -401,7 +403,7 @@ def test():
      # # print(one_hot_df)
 
     
-
+    
 
 
      # Load the saved model from file using pickle
@@ -410,6 +412,7 @@ def test():
 
 
      # print(model.predict_proba(one_hot_df))
+     print(one_hot_df.columns)
 
      return str(model.predict_proba(one_hot_df)[0][1])
      
