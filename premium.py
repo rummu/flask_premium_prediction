@@ -401,17 +401,22 @@ def test():
 
      # print(one_hot_df)
 
-
+  
 
      lst_age=[]
-     for i in user['age']:
-         lst_age.append(i)
-     one_hot_df['age'] = lst_age
+     def normalize(age):
+          return (age-17)/(50-17)
+     one_hot_df['age'] = normalize(user['age'][0])
+     # for i in user['age']:
+     #     lst_age.append(i)
+     # one_hot_df['age'] = lst_age
 
-     lst_income_rs=[]
-     for i in user['income_rs']:
-         lst_income_rs.append(i)
-     one_hot_df['income_rs'] = lst_income_rs
+     one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
+
+     # lst_income_rs=[]
+     # for i in user['income_rs']:
+     #     lst_income_rs.append(i)
+     # one_hot_df['income_rs'] = lst_income_rs
 
      # print(one_hot_df)
      # print(one_hot_df)
@@ -422,7 +427,7 @@ def test():
 
 
      # print(model.predict_proba(one_hot_df))
-     # print(one_hot_df.columns)
+     print(one_hot_df)
 
      return str(model.predict_proba(one_hot_df)[0][1])
      
