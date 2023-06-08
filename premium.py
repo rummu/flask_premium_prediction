@@ -427,7 +427,7 @@ def test():
 
 
      # print(model.predict_proba(one_hot_df))
-     print(one_hot_df)
+     # print(one_hot_df)
 
      return str(model.predict_proba(one_hot_df)[0][1])
      
