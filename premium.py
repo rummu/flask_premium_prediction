@@ -29,6 +29,7 @@ def test1():
      return str(2)
 
 
+
 @app.route('/premium_percent',methods = ['GET','POST'])
 def test():
 
@@ -218,10 +219,13 @@ def test():
      other_states = ['Tripura','Manipur','Lakshadweep','Nagaland','Andaman and Nicobar Islands','Arunachal Pradesh','Mizoram',
                  'Dadra and Nagar Haveli','Sikkim','Himachal Pradesh','Meghalaya','Chandigarh','Daman and Diu','Pogradec']
 
-     if user['present_state'][0] in other_states:
+     try:
+          if user['present_state'][0] in other_states:
                user['present_state'] = ['Other_states']
-     else:
-          user['present_state'] = ['Other_states']
+     except:
+          user['present_state'][0] = [np.nan]
+
+    
 
 
 
@@ -257,7 +261,6 @@ def test():
 
 
      #print(user['highest_education'][0])
-
      # print(user['highest_education'][0])
      # print(e4[0])
 
@@ -375,7 +378,8 @@ def test():
 
      columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                      'caste','sect','family_type','platform']
-     
+
+
      
      one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
@@ -409,11 +413,8 @@ def test():
          lst_income_rs.append(i)
      one_hot_df['income_rs'] = lst_income_rs
 
-     # # print(one_hot_df)
-
-    
-    
-
+     # print(one_hot_df)
+     # print(one_hot_df)
 
      # Load the saved model from file using pickle
      with open('model.pkl', 'rb') as f:
