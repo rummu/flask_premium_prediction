@@ -37,7 +37,6 @@ def test():
      #Request data and decode
      data = request.form['user_data']
      data = json.loads(data)
-     # print(data['member_id'])
 
      user = pd.DataFrame()
 
@@ -51,11 +50,11 @@ def test():
 
      try: 
           if(data["age"]==""):
-               user["age"] = [20]
+               user["age"] = [26]
           else:
               user["age"] = [data['age']]
      except:
-          user['age'] = [20]
+          user['age'] = [26]
 
      try: 
           if(data["marital_status"]==""):
@@ -178,16 +177,6 @@ def test():
      
 
 
-     # user = pd.read_csv('one_user_data.csv',encoding='utf-8')
-     # print(user.columns)
-     # user.to_csv('data.csv',index=False)
-     # user = pd.read_csv('data.csv',dtype=np.float64)
-     
-
-
-     
-
-
 
      #Ads
      ads_list = ["gclid", 'organic',"set", 'fb','Funnel','matrimony']
@@ -231,16 +220,15 @@ def test():
 
      #Education
      
-     e1=['Doctor of Medicine - M.D.', 'M.P.T.', 'Master of Surgery - M.S.', 'L.L.M.', 'M.D.S.', 'Chartered Accountant - CA', 'Doctorate of Medicine - D.M.', 'Doctor of Philosophy - Ph.D. ', 'M.Tech / M.E' ]
+     e1=['Doctor of Philosophy - Ph.D. ', 'M.D.S.', 'Doctorate of Medicine - D.M.', 'Master of Surgery - M.S.', 'Doctor of Medicine - M.D.', 'M.Tech / M.E', 'M.P.T.', 'B.D.S.', 'L.L.M.']
 
-     e2 = ['M.Des./ M.Design.', 'Master of Library Science', 'M.Com.', 'Master of Arts - M.A.', 'M.Phil. ', 'M.B.A.', 'Master of Education - M.Ed.', 'Master of Fine Arts - MFA / MVA', 
-              'B.Tech / B.E.', 'Master of Chirurgiae - M.Ch.', 'M.C.A.', 'B.H.M.S', 'ICWA', 'M.Sc.', 'M.Pharm ', 'M.M.C / M.M.M / M.J.M.C', 'B.U.M.S', 'B.D.S.', 'M.B.B.S.', 'M.Arch.']
+     e2 = ['M.D. (Homoeopathy)', 'Bachelor of Law - L.L.B.', 'B.H.M.S', 'Master of Education - M.Ed.', 'M.Pharm ', 'Chartered Accountant - CA', 'M.Des./ M.Design.', 'B.P.T.', 'B.Tech / B.E.', 'M.B.A.', 'M.B.B.S.', 'Master of Fine Arts - MFA / MVA', 'B.Des. / B.D.', 'M.C.A.', 'M.M.C / M.M.M / M.J.M.C', 'M.Com.', 'M.Arch.', 'B.U.M.S', 'M.Sc.', 'Doctor of Pharmacy - Pharm.D ', 'Master of Arts - M.A.']
      
-     e3=['Doctor of Pharmacy - Pharm.D ', 'BVSc.', 'M.S. (Engineering)', 'CS', 'Master of Physical Education', 'B.Ed', 'B.IT', 'CFA', 'B.C.A.', 'B.Com.', 'B.Sc. - Bachelor of Science', 'B.P.T.', 'Bachelor of Law - L.L.B.', 'B.Des. / B.D.', 'M.D. (Homoeopathy)', 'Master of Social Work / M.A. Social Work']
+     e3=['B.Ed', 'CS', 'ICWA', 'M.S. (Engineering)', 'B.Com.', 'B.Arch', 'M.Phil. ', 'Bachelor of Nursing ', 'Master of Library Science', 'CFA', 'B.IT', 'BVSc.']
 
-     e4=['B.A.M.S.', 'B.A. ', 'Other', 'B.Arch', 'Bachelor of Nursing ', 'B.Pharm / B.Pharma.', 'Bachelor of Library Science', 'Trade School', 'BHM', 'B.B.A.', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc.', 'M.Sc. (Agriculture)', 'Diploma']
+     e4=['B.C.A.', 'Master of Physical Education', 'BHM', 'B.Sc.', 'Diploma', 'M.Sc. (Agriculture)', 'B.B.A.', 'Trade School', 'B.A.M.S.', 'B.Pharm / B.Pharma.', 'Bachelor of Library Science', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc. - Bachelor of Science', 'Master of Social Work / M.A. Social Work', 'Bachelor of Physical Education']
 
-     e5=['High School', 'M.V.Sc.', 'D.Pharma', 'Bachelor of Physical Education', 'B.M.C. / B.M.M./ B.J.M.C.', 'Bachelor of Social Work', 'Aalim Hafiz / Alaima Hafiza', 'Intermediate (12th)']
+     e5=['Bachelor of Social Work', 'Intermediate (12th)', 'M.V.Sc.', 'B.A. ', 'B.M.C. / B.M.M./ B.J.M.C.', 'Master of Chirurgiae - M.Ch.', 'Other', 'High School', 'D.Pharma', 'Aalim Hafiz / Alaima Hafiza']
 
      if user['highest_education'][0] in e1:
                user['highest_education'] = ['Education_category_1']
@@ -260,28 +248,20 @@ def test():
           user['highest_education'] = [np.nan]
 
 
-     #print(user['highest_education'][0])
-     # print(user['highest_education'][0])
-     # print(e4[0])
-
-
-
-
-
 
      #Occupation
 
-     o1=['VP/ AVP/ GM/ DGM', 'Research Professional', 'Surgeon', 'Consultant', 'CxO/ Chairman/ President/ Director', 'Professor/Lecturer', 'Software Professional', 'Scientist', 'Program Manager', 'Research Assistant', 'Subject Matter Expert']
+     o1=['Scientist', 'Project Manager - IT', 'Software Professional', 'Professor/Lecturer', 'VP/ AVP/ GM/ DGM', 'CxO/ Chairman/ President/ Director', 'Research Professional', 'Consultant']
 
-     o2=['Dentist', 'Cyber/Network Security', 'Finance Professional', 'Engineer', 'HR Professional', 'Physiotherapist', 'Quality Assurance Engineer', 'Sr. Manager/ Manager', 'Operations Management', 'Doctor', 'Science Professional']
+     o2=['Mariner', 'Sr. Manager/ Manager', 'Subject Matter Expert', 'Cyber/Network Security', 'Quality Assurance Engineer', 'Finance Professional', 'HR Professional', 'Research Assistant', 'Program Manager', 'Dentist', 'Project Lead - IT', 'Physiotherapist', 'Surgeon', 'Operations Management', 'Engineer']
 
-     o3=['Project Lead - IT', 'Business Owner/ Entrepreneur', 'Teacher', 'Project Manager - IT', 'Corporate Communication', 'Chartered Accountant', 'Medical/ Healthcare Professional', 'Lawyer & Legal Professional', 'Navy', 'UI/UX designer', 'Educational Institution Owner', 'Project Manager - Non IT', 'Auditor', 'Non – IT Engineer', 'Mariner', 'Psychologist', 'Corporate Planning', 'Analyst', 'Education Professional']
+     o3=['Medical/ Healthcare Professional', 'UI/UX designer', 'Banking Professional', 'BPO/ITes Professional', 'Teacher', 'Non – IT Engineer', 'Business Owner/ Entrepreneur', 'Lawyer &amp; Legal Pro', 'Doctor', 'Project Manager - Non IT', 'Education Professional', 'Sales Professional', 'Psychologist', 'Auditor', 'Science Professional', 'Product manager', 'Corporate Communication', 'Analyst']
 
-     o4=['Hardware/Telecom Engineer', 'Sales Professional', 'Security Professional', 'Flight Attendant', 'Not working', 'Fashion Designer', 'Product manager', 'Interior Designer', 'Beautician', 'Hotels/Hospitality Professional', 'Social Services/ NGO/ Volunteer', 'Businessperson', 'Police', 'Others', 'Paramedic', 'Banking Professional', 'Airline Professional', 'BPO/ITes Professional', 'Defence Services', 'Marketing Professional', 'Architect']
+     o4=['Chartered Accountant', 'Fashion Designer', 'Educational Institution Owner', 'Hotels/Hospitality Professional', 'Flight Attendant', 'Airline Professional', 'Interior Designer', 'Pharmacist', 'Not working', 'Customer Service', 'Veterinary Doctor', 'Corporate Planning', 'Marketing Professional', 'Web/Graphic Designer', 'Electronics Engineer', 'Businessperson', 'Security Professional', 'Other', 'Architect', 'Merchant Naval Officer', 'Beautician', 'Paramedic']
 
-     o5=['Media Professional', 'Travel Professional', 'Secretary/Front Office', 'Journalist', 'Nurse', 'Writer', 'Electronics Engineer', 'Web/Graphic Designer', 'PR Professional', 'Pharmacist', 'Advertising Professional', 'Agriculture Professional', 'Accounting Professional', 'Student', 'Customer Service', 'Librarian', 'Army', 'Artist']
+     o5=['Law Enforcement Officer', 'Student', 'Nurse', 'Secretary/Front Office', 'Social Services/ NGO/ Volunteer', 'Defence Services', 'Travel Professional', 'Police', 'Accounting Professional', 'Hardware/Telecom Engineer', 'Artist', 'Animator', 'Media Professional', 'Navy', 'PR Professional']
 
-     o6=['Retired', 'Operator/Technician', 'Broker', 'Veterinary Doctor', 'Air Force', 'Film/ Entertainment Professional', 'Animator', 'Sportsperson', 'Looking for job', 'Civil Services (IAS/ IPS/ IRS/ IES/ IFS)', 'Agent', 'Farming', 'Pilot', 'Law Enforcement Officer', 'Merchant Naval Officer', 'Fitness Professional', 'Clerk', 'Actor/Model', 'Singer', 'Politician', 'Admin Professional']
+     o6=['Politician', 'Writer', 'Sportsperson', 'Admin Professional', 'Operator/Technician', 'Fitness Professional', 'Singer', 'Civil Services (IAS/ IPS/ IRS/ IES/ IFS)', 'Farming', 'Army', 'Film/ Entertainment Professional', 'Broker', 'Actor/Model', 'Advertising Professional', 'Clerk', 'Librarian', 'Agriculture Professional', 'Retired', 'Agent', 'Pilot', 'Journalist', 'Looking for job', 'Air Force']
 
 
      if user['occupation'][0] in o1:
@@ -304,10 +284,6 @@ def test():
 
      else:
           user['occupation'] = ['occupation_category_7']
-
-
-
-
 
 
 
@@ -338,53 +314,25 @@ def test():
 
      #Platform
 
-     if(user['platform'][0]==['Website']):
+     if(user['platform'][0]=='Website'):
           user['platform'] = ['WEBSITE']
 
-     elif(user['platform'][0]==['Android']):
+     elif(user['platform'][0]=='Android'):
           user['platform'] = ['ANDROID']
 
-     elif(user['platform'][0]==['Ios']):
+     elif(user['platform'][0]=='Ios'):
           user['platform'] = ['IOS']
 
      else:
           user['platform'] = ['Other_platforms']
 
 
-
-     # print(user['highest_education'])
-     # print(user.columns)
-
-
-     # #One Hot Encoding
-     # columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
-     #                'caste','sect','family_type','platform']
-
-     # one_hot_df = pd.read_csv('one_hot_data_premium.csv',encoding='utf-8')
-
-     # # print(user)
-
-     # # load the encoder object from file
-     # with open('encoder.pkl', 'rb') as f:
-     #      encoder_model = pickle.load(f)
-
-
-     # # # print(len(encoder_model.transform(user[columns_to_encode]).toarray()[0]))
-
-     # # one_hot_df =  one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
-     # # # print(one_hot_df.columns)
-     # # one_hot_user = pd.DataFrame()
-     # # one_hot_user[one_hot_df.columns] = encoder_model.transform(user[columns_to_encode]).toarray()
+    
 
      columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                      'caste','sect','family_type','platform']
-
-
-     
      one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
-
-     # print(user)
      
      # load the encoder object from file
      with open('encoder.pkl', 'rb') as f:
@@ -394,40 +342,25 @@ def test():
 
      # create a new DataFrame for the one-hot encoded user
      one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
-     # print(one_hot_user)
-
      encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
      one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
 
-     # print(one_hot_df)
-
   
-
+     
+     #Normalize Age
      lst_age=[]
      def normalize(age):
           return (age-17)/(50-17)
      one_hot_df['age'] = normalize(user['age'][0])
-     # for i in user['age']:
-     #     lst_age.append(i)
-     # one_hot_df['age'] = lst_age
 
+     #Normalize Income_rs
      one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
 
-     # lst_income_rs=[]
-     # for i in user['income_rs']:
-     #     lst_income_rs.append(i)
-     # one_hot_df['income_rs'] = lst_income_rs
-
-     # print(one_hot_df)
-     # print(one_hot_df)
 
      # Load the saved model from file using pickle
      with open('model.pkl', 'rb') as f:
           model = pickle.load(f)
-
-
-     # print(model.predict_proba(one_hot_df))
-     # print(one_hot_df)
+     
 
      return str(model.predict_proba(one_hot_df)[0][1])
      
