@@ -6,4 +6,8 @@ pandas==1.4.2
 pickle-mixin==1.0.2
 pickleshare==0.7.5
 scikit-learn==1.0.2
-python
+python-bidi==0.4.2
+python-dateutil==2.8.2
+python-dotenv==1.0.0
+python-jose==3.3.0
+python-multipart==0.0.6
