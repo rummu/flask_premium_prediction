@@ -353,7 +353,7 @@ def test2():
      # return str(model.predict_proba(one_hot_df)[0][1])
 
 
-     return user['platform'][0]
+     return str(one_hot_df.columns)
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
