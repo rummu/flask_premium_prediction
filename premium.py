@@ -316,9 +316,9 @@ def test2():
      else:
           user['platform'] = ['Other_platforms']
 
-     # columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
-     #                 'caste','sect','family_type','platform']
-     # one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
+     columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
+                     'caste','sect','family_type','platform']
+     one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
      
      # load the encoder object from file
@@ -350,7 +350,7 @@ def test2():
      # return str(model.predict_proba(one_hot_df)[0][1])
 
 
-     return user['platform'][0]
+     return str(len(one_hot_df.columns))
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
