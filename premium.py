@@ -319,8 +319,41 @@ def test2():
      else:
           user['platform'] = ['Other_platforms']
 
+     columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
+                     'caste','sect','family_type','platform']
+     one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
-     return user['platform'][0]
+     
+     # load the encoder object from file
+     with open('encoder.pkl', 'rb') as f:
+               encoder_model = pickle.load(f)
+
+     one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
+
+     # create a new DataFrame for the one-hot encoded user
+     one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
+     encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
+     one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
+
+     #Normalize Age
+     lst_age=[]
+     def normalize(age):
+          return (age-17)/(50-17)
+     one_hot_df['age'] = normalize(user['age'][0])
+
+     #Normalize Income_rs
+     one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
+
+
+     # Load the saved model from file using pickle
+     # with open('model.pkl', 'rb') as f:
+     #      model = pickle.load(f)
+     
+
+     # return str(model.predict_proba(one_hot_df)[0][1])
+
+
+     return str(one_hot_df['age'].values)
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
