@@ -321,7 +321,7 @@ def test2():
 
      columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                      'caste','sect','family_type','platform']
-     one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
+     # one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
      
      # load the encoder object from file
