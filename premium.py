@@ -198,7 +198,7 @@ def test2():
         user['ads'] = ['potential_ads']
 
 
-     return user['ads']
+     return user['ads'][0]
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
