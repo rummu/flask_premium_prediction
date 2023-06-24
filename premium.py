@@ -197,8 +197,130 @@ def test2():
      except:
         user['ads'] = ['potential_ads']
 
+     #States
+     other_states = ['Tripura','Manipur','Lakshadweep','Nagaland','Andaman and Nicobar Islands','Arunachal Pradesh','Mizoram',
+                 'Dadra and Nagar Haveli','Sikkim','Himachal Pradesh','Meghalaya','Chandigarh','Daman and Diu','Pogradec']
 
-     return user['ads'][0]
+     try:
+          if user['present_state'][0] in other_states:
+               user['present_state'] = ['Other_states']
+     except:
+          user['present_state'][0] = [np.nan]
+
+    
+
+
+
+     #Education
+     
+     e1=['Doctor of Philosophy - Ph.D. ', 'M.D.S.', 'Doctorate of Medicine - D.M.', 'Master of Surgery - M.S.', 'Doctor of Medicine - M.D.', 'M.Tech / M.E', 'M.P.T.', 'B.D.S.', 'L.L.M.']
+
+     e2 = ['M.D. (Homoeopathy)', 'Bachelor of Law - L.L.B.', 'B.H.M.S', 'Master of Education - M.Ed.', 'M.Pharm ', 'Chartered Accountant - CA', 'M.Des./ M.Design.', 'B.P.T.', 'B.Tech / B.E.', 'M.B.A.', 'M.B.B.S.', 'Master of Fine Arts - MFA / MVA', 'B.Des. / B.D.', 'M.C.A.', 'M.M.C / M.M.M / M.J.M.C', 'M.Com.', 'M.Arch.', 'B.U.M.S', 'M.Sc.', 'Doctor of Pharmacy - Pharm.D ', 'Master of Arts - M.A.']
+     
+     e3=['B.Ed', 'CS', 'ICWA', 'M.S. (Engineering)', 'B.Com.', 'B.Arch', 'M.Phil. ', 'Bachelor of Nursing ', 'Master of Library Science', 'CFA', 'B.IT', 'BVSc.']
+
+     e4=['B.C.A.', 'Master of Physical Education', 'BHM', 'B.Sc.', 'Diploma', 'M.Sc. (Agriculture)', 'B.B.A.', 'Trade School', 'B.A.M.S.', 'B.Pharm / B.Pharma.', 'Bachelor of Library Science', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc. - Bachelor of Science', 'Master of Social Work / M.A. Social Work', 'Bachelor of Physical Education']
+
+     e5=['Bachelor of Social Work', 'Intermediate (12th)', 'M.V.Sc.', 'B.A. ', 'B.M.C. / B.M.M./ B.J.M.C.', 'Master of Chirurgiae - M.Ch.', 'Other', 'High School', 'D.Pharma', 'Aalim Hafiz / Alaima Hafiza']
+
+     if user['highest_education'][0] in e1:
+               user['highest_education'] = ['Education_category_1']
+
+     elif user['highest_education'][0] in e2:
+               user['highest_education'] = ['Education_category_2']
+
+     elif user['highest_education'][0] in e3:
+               user['highest_education'] = ['Education_category_3']
+
+     elif user['highest_education'][0] in e4:
+               user['highest_education'] = ['Education_category_4']
+
+     elif user['highest_education'][0] in e5:
+               user['highest_education'] = ['Education_category_5']
+     else:
+          user['highest_education'] = [np.nan]
+
+
+
+     #Occupation
+
+     o1=['Scientist', 'Project Manager - IT', 'Software Professional', 'Professor/Lecturer', 'VP/ AVP/ GM/ DGM', 'CxO/ Chairman/ President/ Director', 'Research Professional', 'Consultant']
+
+     o2=['Mariner', 'Sr. Manager/ Manager', 'Subject Matter Expert', 'Cyber/Network Security', 'Quality Assurance Engineer', 'Finance Professional', 'HR Professional', 'Research Assistant', 'Program Manager', 'Dentist', 'Project Lead - IT', 'Physiotherapist', 'Surgeon', 'Operations Management', 'Engineer']
+
+     o3=['Medical/ Healthcare Professional', 'UI/UX designer', 'Banking Professional', 'BPO/ITes Professional', 'Teacher', 'Non – IT Engineer', 'Business Owner/ Entrepreneur', 'Lawyer &amp; Legal Pro', 'Doctor', 'Project Manager - Non IT', 'Education Professional', 'Sales Professional', 'Psychologist', 'Auditor', 'Science Professional', 'Product manager', 'Corporate Communication', 'Analyst']
+
+     o4=['Chartered Accountant', 'Fashion Designer', 'Educational Institution Owner', 'Hotels/Hospitality Professional', 'Flight Attendant', 'Airline Professional', 'Interior Designer', 'Pharmacist', 'Not working', 'Customer Service', 'Veterinary Doctor', 'Corporate Planning', 'Marketing Professional', 'Web/Graphic Designer', 'Electronics Engineer', 'Businessperson', 'Security Professional', 'Other', 'Architect', 'Merchant Naval Officer', 'Beautician', 'Paramedic']
+
+     o5=['Law Enforcement Officer', 'Student', 'Nurse', 'Secretary/Front Office', 'Social Services/ NGO/ Volunteer', 'Defence Services', 'Travel Professional', 'Police', 'Accounting Professional', 'Hardware/Telecom Engineer', 'Artist', 'Animator', 'Media Professional', 'Navy', 'PR Professional']
+
+     o6=['Politician', 'Writer', 'Sportsperson', 'Admin Professional', 'Operator/Technician', 'Fitness Professional', 'Singer', 'Civil Services (IAS/ IPS/ IRS/ IES/ IFS)', 'Farming', 'Army', 'Film/ Entertainment Professional', 'Broker', 'Actor/Model', 'Advertising Professional', 'Clerk', 'Librarian', 'Agriculture Professional', 'Retired', 'Agent', 'Pilot', 'Journalist', 'Looking for job', 'Air Force']
+
+
+     if user['occupation'][0] in o1:
+          user['occupation'] = ['occupation_category_1']
+
+     elif user['occupation'][0] in o2:
+          user['occupation'] = ['occupation_category_2']
+
+     elif user['occupation'][0] in o3:
+          user['occupation'] = ['occupation_category_3']
+
+     elif user['occupation'][0] in o4:
+          user['occupation'] = ['occupation_category_4']
+
+     elif user['occupation'][0] in o5:
+          user['occupation'] = ['occupation_category_5']
+
+     elif user['occupation'][0] in o6:
+          user['occupation'] = ['occupation_category_6']
+
+     else:
+          user['occupation'] = ['occupation_category_7']
+
+
+
+     #Caste
+     c1=['Kalal (Iraqi)', 'Sunni Ehle-Hadith', 'Sheikh or Shaikh', 'Memon', 'Khan or Pathan', 'Syed', 'Mallick-Bihar', 'Shams or Shamsi']
+
+     c2=['Rayeen', 'Zaidi', 'Mughal', 'Farooqui', 'Ansari', 'Siddique', 'Mansoori', 'No Caste', 'Hawrai']
+
+     c3=['Salmani', 'Muslim Choudhary', 'Malik', 'Dawoodi Bohra', 'Usmani', 'Shah', 'Rehman', 'Lababin', 'Gaddi', 'Other', 'Naqvi', 'Punjabi Muslim', 'Shafi', 'Muslim Rajput', 'Idrisi', 'Turq or Turk', 'Quraishi', 'Saifi', 'Alvi']
+
+     c4=['Abdal', 'Kunwar', 'Tyagi', 'Gujrati', 'Bengali', 'Khwaja', 'Qasmi', 'Nomani', 'Abbasi', 'Sunni', 'Bhat', 'Muslim Rajput Thakur', 'Ali', 'Fatmi', 'Mewati', 'Muslim Chauhan', 'Ahmad or Ahmed']
+
+     if user['caste'][0] in c1:
+          user['caste'] = ['caste_category_1']
+
+     elif user['caste'][0] in c2:
+          user['caste'] = ['caste_category_2']
+
+     elif user['caste'][0] in c3:
+          user['caste'] = ['caste_category_3']
+
+     elif user['caste'][0] in c4:
+          user['caste'] = ['caste_category_4']
+     else:
+          user['caste'] = [np.nan]
+
+
+
+     #Platform
+
+     if(user['platform'][0].lower()=='website'):
+          user['platform'] = ['WEBSITE']
+
+     elif(user['platform'][0].lower()=='android'):
+          user['platform'] = ['ANDROID']
+
+     elif(user['platform'][0].lower()=='ios'):
+          user['platform'] = ['IOS']
+
+     else:
+          user['platform'] = ['Other_platforms']
+
+
+     return user['platform'][0]
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
