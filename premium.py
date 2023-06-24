@@ -325,24 +325,24 @@ def test2():
 
      
      # load the encoder object from file
-     with open('encoder.pkl', 'rb') as f:
-               encoder_model = pickle.load(f)
+     # with open('encoder.pkl', 'rb') as f:
+     #           encoder_model = pickle.load(f)
 
-     one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
+     # one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
      # create a new DataFrame for the one-hot encoded user
-     one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
-     encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
-     one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
+     # one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
+     # encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
+     # one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
 
      #Normalize Age
-     lst_age=[]
-     def normalize(age):
-          return (age-17)/(50-17)
-     one_hot_df['age'] = normalize(user['age'][0])
+     # lst_age=[]
+     # def normalize(age):
+     #      return (age-17)/(50-17)
+     # one_hot_df['age'] = normalize(user['age'][0])
 
      #Normalize Income_rs
-     one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
+     # one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
 
 
      # Load the saved model from file using pickle
@@ -353,7 +353,7 @@ def test2():
      # return str(model.predict_proba(one_hot_df)[0][1])
 
 
-     return str(one_hot_df['age'].values)
+     return user['platform'][0]
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
