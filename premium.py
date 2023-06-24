@@ -329,8 +329,6 @@ def test():
                user['platform'] = ['Other_platforms']
 
 
-          print(user)
-
           columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                          'caste','sect','family_type','platform']
           one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
