@@ -321,14 +321,14 @@ def test2():
 
      columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_state','highest_education','occupation','employed',
                      'caste','sect','family_type','platform']
-     # one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
+     one_hot_df = pd.read_csv('one_hot_data_premium_columns.csv',encoding='utf-8')
 
      
      # load the encoder object from file
-     # with open('encoder.pkl', 'rb') as f:
-     #           encoder_model = pickle.load(f)
+     with open('encoder.pkl', 'rb') as f:
+               encoder_model = pickle.load(f)
 
-     # one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
+     one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
      # create a new DataFrame for the one-hot encoded user
      # one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
