@@ -1,1 +1,3 @@
-member_id,gender,age,income,marital_status,on_behalf,ads,present_state,present_country,permanent_country,highest_education,occupation,employed,caste,sect,family_type,otp,platform,status,membership,income_rs
+version https://git-lfs.github.com/spec/v1
+oid sha256:4204b4a7f0d95859912ffee3ed68f9fa91f316fe69ef7b16ec333fb173758b00
+size 207
