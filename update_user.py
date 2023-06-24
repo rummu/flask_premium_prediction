@@ -38,7 +38,7 @@ def test1():
 
 @app.route('/update_user',methods = ['GET','POST'])
 def test2():
-     df = pd.read_csv('premium_update1.csv',encoding='utf-8')
+     df = pd.read_csv('premium_update.csv',encoding='utf-8')
      # print(df[['member_id','age']])
      # print(len(df))
 
@@ -195,7 +195,7 @@ def test2():
      # end_time = time.time()
      # print(end_time-start_time)
 
-     full_data.to_csv('premium_update1.csv',index=False)
+     full_data.to_csv('premium_update.csv',index=False)
 
      return "Data Updated Successfully"
 
