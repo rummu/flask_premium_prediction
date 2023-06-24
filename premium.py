@@ -29,6 +29,11 @@ def test1():
      return str(2)
 
 
+@app.route('/test1',methods = ['GET','POST'])
+def test2():
+     return str(3)
+
+
 
 @app.route('/premium_percent',methods = ['GET','POST'])
 def test():
