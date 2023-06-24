@@ -369,14 +369,14 @@ def test2():
 
 
      # Load the saved model from file using pickle
-     # with open('model.pkl', 'rb') as f:
-     #      model = pickle.load(f)
+     with open('model.pkl', 'rb') as f:
+          model = pickle.load(f)
      
 
-     # return str(model.predict_proba(one_hot_df)[0][1])
+     return str(model.predict_proba(one_hot_df)[0][1])
 
 
-     return str(len(one_hot_df.columns))
+     # return str(len(one_hot_df.columns))
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
