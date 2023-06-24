@@ -32,7 +32,173 @@ def test1():
 def test2():
      data = request.form['user_data']
      data = json.loads(data)
-     return data['gender']
+
+     user = pd.DataFrame()
+
+     try: 
+          if(data["gender"]==""):
+               user["gender"] = [np.nan]
+          else:
+              user["gender"] = [data['gender']]
+     except:
+          user['gender'] = [np.nan]
+
+     try: 
+          if(data["age"]==""):
+               user["age"] = [26]
+          else:
+              user["age"] = [data['age']]
+     except:
+          user['age'] = [26]
+
+     try: 
+          if(data["marital_status"]==""):
+               user["marital_status"] = [np.nan]
+          else:
+              user["marital_status"] = [data['marital_status']]
+     except:
+          user['marital_status'] = [np.nan]
+
+     try: 
+          if(data["marital_status"]==""):
+               user["marital_status"] = [np.nan]
+          else:
+              user["marital_status"] = [data['marital_status']]
+     except:
+          user['marital_status'] = [np.nan]
+     
+     try: 
+          if(data["on_behalf"]==""):
+               user["on_behalf"] = [np.nan]
+          else:
+              user["on_behalf"] = [data['on_behalf']]
+     except:
+          user['on_behalf'] = [np.nan]
+     
+     try: 
+          if(data["ads"]==""):
+               user["ads"] = [np.nan]
+          else:
+              user["ads"] = [urllib.parse.unquote(data['ads'])]
+     except:
+          user['ads'] = [np.nan]
+
+     try: 
+          if(data["present_state"]==""):
+               user["present_state"] = [np.nan]
+          else:
+              user["present_state"] = [data['present_state']]
+     except:
+          user['present_state'] = [np.nan]
+
+     try: 
+          if(data["highest_education"]==""):
+               user["highest_education"] = [np.nan]
+          else:
+              user["highest_education"] = [data['highest_education']]
+     except:
+          user['highest_education'] = [np.nan]
+     
+     try: 
+          if(data["occupation"]==""):
+               user["occupation"] = [np.nan]
+          else:
+              user["occupation"] = [data['occupation']]
+     except:
+          user['occupation'] = [np.nan]
+     
+     try: 
+          if(data["employed"]==""):
+               user["employed"] = [np.nan]
+          elif(data['employed']=="Government/Public Sector"):
+               user['employed'] = ["Government/Public Sect"]
+          else:
+              user["employed"] = [data['employed']]
+     except:
+          user['employed'] = [np.nan]
+     
+     try: 
+          if(data["caste"]==""):
+               user["caste"] = [np.nan]
+          else:
+              user["caste"] = [data['caste']]
+     except:
+          user['caste'] = [np.nan]
+
+     try: 
+          if(data["sect"]==""):
+               user["sect"] = [np.nan]
+          else:
+              user["sect"] = [data['sect']]
+     except:
+          user['sect'] = [np.nan]
+     
+     try: 
+          if(data["family_type"]==""):
+               user["family_type"] = [np.nan]
+          else:
+              user["family_type"] = [data['family_type']]
+     except:
+          user['family_type'] = [np.nan]
+
+     try: 
+          if(data["platform"]==""):
+               user["platform"] = [np.nan]
+          else:
+              user["platform"] = [data['platform']]
+     except:
+          user['platform'] = [np.nan]
+
+     try: 
+          if(data["income_rs"]==""):
+               user["income_rs"] = [0]
+          else:
+              user["income_rs"] = [data['income_rs']]
+              #Income_rs
+              def income(x):
+                    if x is np.nan:
+                         return x
+                    elif x =='No Income':
+                         return 0
+                    else:
+                         if x.split(' ')[1]=='0':
+                              return int(x.split(' ')[3])
+                         return int(x.split(' ')[1])
+
+     
+              user['income_rs'] = income(user['income_rs'][0])
+     except:
+          user['income_rs'] = [0]
+     
+
+
+
+     #Ads
+     ads_list = ["gclid", 'organic',"set", 'fb','Funnel','matrimony']
+
+     def get_first_word(string, words_list):
+          words = string.split()
+          for word in words:
+               for item in words_list:
+                    if word.lower() == item.lower():
+                         return item
+                    elif item.lower() in word.lower():
+                         return item
+          return None
+
+     try:
+        str_res = get_first_word(user['ads'][0],ads_list)
+        if(str_res==None):
+            user['ads'] = ['other_ads']
+        elif(str_res=='set'):
+            user['ads'] = ['not set']
+        else:
+            user['ads'] = [str_res]
+     except:
+        user['ads'] = ['potential_ads']
+
+
+     return user['ads']
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
