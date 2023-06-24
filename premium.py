@@ -314,13 +314,13 @@ def test():
 
      #Platform
 
-     if(user['platform'][0]=='Website'):
+     if(user['platform'][0].lower()=='website'):
           user['platform'] = ['WEBSITE']
 
-     elif(user['platform'][0]=='Android'):
+     elif(user['platform'][0].lower()=='android'):
           user['platform'] = ['ANDROID']
 
-     elif(user['platform'][0]=='Ios'):
+     elif(user['platform'][0].lower()=='ios'):
           user['platform'] = ['IOS']
 
      else:
