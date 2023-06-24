@@ -28,10 +28,15 @@ def home():
 def test1():
      return str(2)
 
+@app.route('/test_premium',methods = ['GET','POST'])
+def test2():
+     data = request.form['user_data']
+     data = json.loads(data)
+     return data['gender']
+
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
 def test():
-
 
      #Request data and decode
      data = request.form['user_data']
