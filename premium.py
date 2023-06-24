@@ -325,10 +325,10 @@ def test2():
 
      
      # load the encoder object from file
-     with open('encoder.pkl', 'rb') as f:
-               encoder_model = pickle.load(f)
+     # with open('encoder.pkl', 'rb') as f:
+     #           encoder_model = pickle.load(f)
 
-     one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
+     # one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
      # create a new DataFrame for the one-hot encoded user
      # one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
@@ -353,7 +353,7 @@ def test2():
      # return str(model.predict_proba(one_hot_df)[0][1])
 
 
-     return str(one_hot_df.columns)
+     return str(len(one_hot_df.columns))
 
 
 @app.route('/nf-premium_percent',methods = ['GET','POST'])
