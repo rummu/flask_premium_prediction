@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import urllib.parse
 pd.set_option('display.max_columns', None)
 
-
 app = Flask(__name__)
 CORS(app)
 
