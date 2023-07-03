@@ -570,15 +570,15 @@ def test():
 
 
           #Education
-          e1=['Doctor of Philosophy - Ph.D. ', 'M.D.S.', 'Doctorate of Medicine - D.M.', 'Master of Surgery - M.S.', 'Doctor of Medicine - M.D.', 'M.Tech / M.E', 'M.P.T.', 'B.D.S.', 'L.L.M.']
+          e1=['B.D.S.', 'Doctor of Medicine - M.D.', 'Doctor of Philosophy - Ph.D.', 'Doctorate of Medicine - D.M.', 'M.D.S.', 'M.Tech / M.E', 'L.L.M.', 'M.P.T.', 'Master of Surgery - M.S.']
 
-          e2 = ['M.D. (Homoeopathy)', 'Bachelor of Law - L.L.B.', 'B.H.M.S', 'Master of Education - M.Ed.', 'M.Pharm ', 'Chartered Accountant - CA', 'M.Des./ M.Design.', 'B.P.T.', 'B.Tech / B.E.', 'M.B.A.', 'M.B.B.S.', 'Master of Fine Arts - MFA / MVA', 'B.Des. / B.D.', 'M.C.A.', 'M.M.C / M.M.M / M.J.M.C', 'M.Com.', 'M.Arch.', 'B.U.M.S', 'M.Sc.', 'Doctor of Pharmacy - Pharm.D ', 'Master of Arts - M.A.']
+          e2 = ['B.Des. / B.D.', 'B.Tech / B.E.', 'B.H.M.S', 'Bachelor of Law - L.L.B.', 'M.B.B.S.', 'B.P.T.', 'M.D. (Homoeopathy)', 'Doctor of Pharmacy - Pharm.D', 'M.Arch.', 'Master of Arts - M.A.', 'M.B.A.', 'M.Com.', 'M.C.A.', 'M.Des./ M.Design.', 'Master of Education - M.Ed.', 'Master of Fine Arts - MFA / MVA', 'M.M.C / M.M.M / M.J.M.C', 'M.Pharm', 'M.Sc.','B.U.M.S', 'Chartered Accountant - CA']
           
-          e3=['B.Ed', 'CS', 'ICWA', 'M.S. (Engineering)', 'B.Com.', 'B.Arch', 'M.Phil. ', 'Bachelor of Nursing ', 'Master of Library Science', 'CFA', 'B.IT', 'BVSc.']
+          e3=['B.Com.', 'B.Arch', 'B.Ed', 'Bachelor of Nursing', 'BVSc.', 'Master of Library Science', 'M.Phil.', 'M.S. (Engineering)', 'CFA', 'B.IT', 'CS', 'ICWA']
 
-          e4=['B.C.A.', 'Master of Physical Education', 'BHM', 'B.Sc.', 'Diploma', 'M.Sc. (Agriculture)', 'B.B.A.', 'Trade School', 'B.A.M.S.', 'B.Pharm / B.Pharma.', 'Bachelor of Library Science', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc. - Bachelor of Science', 'Master of Social Work / M.A. Social Work', 'Bachelor of Physical Education']
+          e4=['B.A.M.S.', 'B.B.A.', 'B.C.A.', 'Bachelor of Fine Arts - BFA / BVA', 'B.Sc. - Bachelor of Science', 'B.Sc. - Bachelor of Science', 'Bachelor of Library Science', 'B.Pharm / B.Pharma.', 'Bachelor of Physical Education', 'B.Sc.', 'Master of Physical Education', 'Master of Social Work / M.A. Social Work', 'M.Sc. (Agriculture)', 'BHM', 'Trade School', 'Diploma']
 
-          e5=['Bachelor of Social Work', 'Intermediate (12th)', 'M.V.Sc.', 'B.A. ', 'B.M.C. / B.M.M./ B.J.M.C.', 'Master of Chirurgiae - M.Ch.', 'Other', 'High School', 'D.Pharma', 'Aalim Hafiz / Alaima Hafiza']
+          e5=['B.A.', 'B.M.C. / B.M.M./ B.J.M.C.', 'Bachelor of Social Work', 'Master of Chirurgiae - M.Ch.', 'M.V.Sc.', 'Other', 'Aalim Hafiz / Alaima Hafiza', 'High School', 'D.Pharma', 'Intermediate (12th)']
 
           if user['highest_education'][0] in e1:
                     user['highest_education'] = ['Education_category_1']
@@ -604,9 +604,9 @@ def test():
 
           o2=['Mariner', 'Sr. Manager/ Manager', 'Subject Matter Expert', 'Cyber/Network Security', 'Quality Assurance Engineer', 'Finance Professional', 'HR Professional', 'Research Assistant', 'Program Manager', 'Dentist', 'Project Lead - IT', 'Physiotherapist', 'Surgeon', 'Operations Management', 'Engineer']
 
-          o3=['Medical/ Healthcare Professional', 'UI/UX designer', 'Banking Professional', 'BPO/ITes Professional', 'Teacher', 'Non – IT Engineer', 'Business Owner/ Entrepreneur', 'Lawyer &amp; Legal Pro', 'Doctor', 'Project Manager - Non IT', 'Education Professional', 'Sales Professional', 'Psychologist', 'Auditor', 'Science Professional', 'Product manager', 'Corporate Communication', 'Analyst']
+          o3=['Medical/ Healthcare Professional', 'UI/UX designer', 'Banking Professional', 'BPO/ITes Professional', 'Teacher', 'Non – IT Engineer', 'Business Owner/ Entrepreneur', 'Lawyer/ Legal Professional', 'Doctor', 'Project Manager - Non IT', 'Education Professional', 'Sales Professional', 'Psychologist', 'Auditor', 'Science Professional', 'Product manager', 'Corporate Communication', 'Analyst']
 
-          o4=['Chartered Accountant', 'Fashion Designer', 'Educational Institution Owner', 'Hotels/Hospitality Professional', 'Flight Attendant', 'Airline Professional', 'Interior Designer', 'Pharmacist', 'Not working', 'Customer Service', 'Veterinary Doctor', 'Corporate Planning', 'Marketing Professional', 'Web/Graphic Designer', 'Electronics Engineer', 'Businessperson', 'Security Professional', 'Other', 'Architect', 'Merchant Naval Officer', 'Beautician', 'Paramedic']
+          o4=['Chartered Accountant', 'Fashion Designer', 'Educational Institution Owner', 'Hotels/Hospitality Professional', 'Flight Attendant', 'Airline Professional', 'Interior Designer', 'Pharmacist', 'Not working', 'Customer Service', 'Veterinary Doctor', 'Corporate Planning', 'Marketing Professional', 'Web/Graphic Designer', 'Electronics Engineer', 'Businessperson', 'Security Professional', 'Others', 'Architect', 'Merchant Naval Officer', 'Beautician', 'Paramedic']
 
           o5=['Law Enforcement Officer', 'Student', 'Nurse', 'Secretary/Front Office', 'Social Services/ NGO/ Volunteer', 'Defence Services', 'Travel Professional', 'Police', 'Accounting Professional', 'Hardware/Telecom Engineer', 'Artist', 'Animator', 'Media Professional', 'Navy', 'PR Professional']
 
@@ -734,6 +734,7 @@ def test():
           # Load the saved model from file using pickle
           with open('model.pkl', 'rb') as f:
                model = pickle.load(f)          
+          print(one_hot_df)
 
           return str(model.predict_proba(one_hot_df)[0][1])     
      
@@ -1033,7 +1034,7 @@ def test():
 
                o2=['Quality Assurance Engineer', 'CxO/ Chairman/ President/ Director', 'Hardware/Telecom Engineer', 'VP/ AVP/ GM/ DGM', 'Corporate Communication', 'Science Professional', 'UI/UX designer', 'PR Professional', 'Surgeon', 'Consultant', 'Analyst', 'Flight Attendant', 'Operations Management', 'Engineer', 'Security Professional']
 
-               o3=['Program Manager', 'Medical/ Healthcare Professional', 'Professor/Lecturer', 'Chartered Accountant', 'Marketing Professional', 'Travel Professional', 'Doctor', 'Accounting Professional', 'Educational Institution Owner', 'Airline Professional', 'Auditor', 'Sr. Manager/ Manager', 'Project Manager - Non IT', 'Banking Professional', 'Product manager', 'Subject Matter Expert', 'Paramedic', 'Research Assistant', 'Electronics Engineer']
+               o3=['Program Manager', 'Medical/ Healthcare Professional', 'Professor/Lecturer', 'Chartered Accountant', 'Marketing Professional', 'Travel Professional', 'Doctor', 'Accounting Professional', 'Educational Institution Owner', 'Airline Professional', 'Auditor', 'Sr. Manager/ Manager', 'Project Manager - Non IT', 'Banking Professional', 'Product manager', 'Subject Matter Expert', 'Paramedic', 'Research Assistant', 'Electronics Engineer','Lawyer/ Legal Professional']
 
                o4=['Non – IT Engineer', 'Businessperson', 'Customer Service', 'Others', 'Army', 'Not working', 'Admin Professional', 'Pharmacist', 'Sales Professional', 'HR Professional', 'Pilot', 'Hotels/Hospitality Professional', 'Nurse', 'Web/Graphic Designer', 'Teacher', 'Cyber/Network Security', 'Interior Designer', 'Architect', 'Operator/Technician', 'Business Owner/ Entrepreneur']
 
@@ -1165,6 +1166,8 @@ def test():
                          return 0.5 * (value / thershold)
                     else:
                          return 0.5 + 0.5 * ((value - thershold) / (1.0 - thershold))
+                    
+               print(one_hot_df)
                
                return str(rescale_value(model.predict_proba(one_hot_df)[0][1]))
 
