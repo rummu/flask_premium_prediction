@@ -1001,13 +1001,13 @@ def test():
                e1=['M.P.T.','B.Tech / B.E.','M.Tech / M.E','B.D.S.','Doctor of Philosophy - Ph.D.','Master of Chirurgiae - M.Ch.',
                     'Doctor of Medicine - M.D.','M.S. (Engineering)','ICWA']
 
-               e2 = ['B.B.A.', 'Diploma', 'Master of Arts - M.A.', 'M.Com.', 'M.D.S.', 'M.Sc. (Agriculture)', 'M.Sc.', 'M.Arch.', 'Master of Library Science', 'Chartered Accountant - CA', 'M.B.A.', 'M.C.A.', 'M.Des./ M.Design.', 'CFA', 'B.P.T.', 'B.C.A.', 'L.L.M.', 'B.Com.', 'B.IT', 'M.B.B.S.', 'BHM']
+               e2 = ['Master of Library Science', 'M.Des./ M.Design.', 'Master of Arts - M.A.', 'M.D.S.', 'B.P.T.', 'M.B.B.S.', 'M.Arch.', 'B.Com.', 'B.B.A.', 'B.IT', 'M.Com.', 'M.Sc.', 'Chartered Accountant - CA', 'BHM', 'M.C.A.', 'CFA', 'M.Sc. (Agriculture)', 'Diploma', 'L.L.M.', 'M.B.A.', 'B.C.A.']
                
-               e3=['Bachelor of Fine Arts - BFA / BVA', 'Bachelor of Law - L.L.B.', 'Doctor of Pharmacy - Pharm.D', 'Intermediate (12th)', 'Master of Social Work / M.A. Social Work', 'B.Pharm / B.Pharma.', 'Aalim Hafiz / Alaima Hafiza', 'B.Ed', 'B.Sc. - Bachelor of Science']
+               e3=['Bachelor of Fine Arts - BFA / BVA', 'Bachelor of Law - L.L.B.', 'Doctor of Pharmacy - Pharm.D', 'Intermediate (12th)', 'Master of Social Work / M.A. Social Work', 'B.Pharm / B.Pharma.', 'Aalim Hafiz / Alaima Hafiza', 'B.Ed', 'B.Sc. - Bachelor of Science','B.A.','M.Phil.','Others']
 
-               e4=['Trade School', 'Master of Education - M.Ed.', 'B.Arch', 'B.Sc.', 'High School', 'B.Sc. - Bachelor of Science']
+               e4=['Trade School', 'Master of Education - M.Ed.', 'B.Arch', 'B.Sc.', 'High School']
 
-               e5=['M.V.Sc.', 'B.U.M.S', 'Master of Physical Education', 'B.A.M.S.', 'Bachelor of Physical Education', 'Master of Surgery - M.S.', 'M.Sc. (Agriculture)', 'CS', 'M.D. (Homoeopathy)', 'B.M.C. / B.M.M./ B.J.M.C.', 'Doctorate of Medicine - D.M.', 'Master of Fine Arts - MFA / MVA', 'M.M.C / M.M.M / M.J.M.C', 'BVSc.', 'D.Pharma', 'B.H.M.S', 'B.Des. / B.D.', 'Bachelor of Social Work', 'Bachelor of Library Science']
+               e5=['M.V.Sc.', 'B.U.M.S', 'Master of Physical Education', 'B.A.M.S.', 'Bachelor of Physical Education', 'Master of Surgery - M.S.', 'M.Sc. (Agriculture)', 'CS', 'M.D. (Homoeopathy)', 'B.M.C. / B.M.M./ B.J.M.C.', 'Doctorate of Medicine - D.M.', 'Master of Fine Arts - MFA / MVA', 'M.M.C / M.M.M / M.J.M.C', 'BVSc.', 'D.Pharma', 'B.H.M.S', 'B.Des. / B.D.', 'Bachelor of Social Work', 'Bachelor of Library Science','Bachelor of Nursing']
 
                if user['highest_education'][0] in e1:
                          user['highest_education'] = ['Education_category_1']
@@ -1091,7 +1091,6 @@ def test():
                     user['caste'] = [np.nan]
 
 
-
                #Platform
                try:
                     if(user['platform'][0].lower()=='website'):
@@ -1109,31 +1108,46 @@ def test():
                     user['platform'] = ['Other_platforms']
 
 
-
+               
                
                columns_to_encode = ['gender', 'marital_status', 'on_behalf','ads','present_country','highest_education','occupation','employed',
                          'caste','sect','family_type','platform']
                features=[
-                    'gender_Female', 'gender_Male', 'marital_status_Divorced', 'marital_status_Never Married', 'marital_status_Separated',
-                    'marital_status_Widowed', 'marital_status_null', 'on_behalf_Brother', 'on_behalf_Daughter', 'on_behalf_Relative/Friend',
-                    'on_behalf_Self', 'on_behalf_Sister', 'on_behalf_Son', 'ads_Funnel', 'ads_fb', 'ads_gclid', 'ads_matrimony', 'ads_not set',
-                    'ads_organic', 'ads_other_ads', 'ads_potential_ads', 'present_country_africa_non_paying', 'present_country_africa_paying',
-                    'present_country_america_non_paying', 'present_country_america_paying', 'present_country_asia_non_paying',
-                    'present_country_europe_non_paying', 'present_country_europe_paying', 'present_country_indian_neighbours',
-                    'present_country_middle_eastern_non_paying', 'present_country_middle_eastern_paying', 'present_country_other_country',
-                    'present_country_south_asia', 'highest_education_Education_category_1', 'highest_education_Education_category_2',
-                    'highest_education_Education_category_3', 'highest_education_Education_category_5', 'highest_education_null',
-                    'occupation_occupation_category_1', 'occupation_occupation_category_2', 'occupation_occupation_category_3',
-                    'occupation_occupation_category_4', 'occupation_occupation_category_6', 'occupation_occupation_category_7',
-                    'employed_Business/Self Employed', 'employed_Civil Services', 'employed_Defence', 'employed_Government/Public Sect',
-                    'employed_Not Working', 'employed_Private Sector', 'employed_null', 'caste_caste_category_1', 'caste_caste_category_2',
-                    'caste_caste_category_3', 'caste_caste_category_4', 'caste_null', 'sect_Shia', 'sect_Sunni', 'sect_null',
-                    'family_type_Joint Family', 'family_type_Nuclear Family', 'family_type_null', 'platform_ANDROID', 'platform_IOS',
-                    'platform_Other_platforms', 'platform_WEBSITE', 'member_id', 'age', 'income_rs', 'membership']
+                    'gender_Female', 'gender_Male', 'marital_status_Divorced ',
+                    'marital_status_Never Married', 'marital_status_Separated ',
+                    'marital_status_Widowed', 'marital_status_null', 'on_behalf_Brother',
+                    'on_behalf_Daughter', 'on_behalf_Relative/Friend', 'on_behalf_Self',
+                    'on_behalf_Sister', 'on_behalf_Son', 'ads_Funnel', 'ads_fb',
+                    'ads_gclid', 'ads_matrimony', 'ads_not set', 'ads_organic',
+                    'ads_other_ads', 'ads_potential_ads',
+                    'present_country_africa_non_paying', 'present_country_africa_paying',
+                    'present_country_america_non_paying', 'present_country_america_paying',
+                    'present_country_asia_non_paying', 'present_country_europe_non_paying',
+                    'present_country_europe_paying', 'present_country_indian_neighbours',
+                    'present_country_middle_eastern_non_paying',
+                    'present_country_middle_eastern_paying',
+                    'present_country_other_country', 'present_country_south_asia',
+                    'highest_education_Education_category_1',
+                    'highest_education_Education_category_2',
+                    'highest_education_Education_category_3',
+                    'highest_education_Education_category_4',
+                    'highest_education_Education_category_5', 'highest_education_null',
+                    'occupation_occupation_category_1', 'occupation_occupation_category_2',
+                    'occupation_occupation_category_3', 'occupation_occupation_category_4',
+                    'occupation_occupation_category_5', 'occupation_occupation_category_6',
+                    'occupation_occupation_category_7', 'employed_Business/Self Employed',
+                    'employed_Civil Services', 'employed_Defence',
+                    'employed_Government/Public Sect', 'employed_Not Working',
+                    'employed_Private Sector', 'employed_null', 'caste_caste_category_1',
+                    'caste_caste_category_2', 'caste_caste_category_3',
+                    'caste_caste_category_4', 'caste_null', 'sect_Shia', 'sect_Sunni',
+                    'sect_null', 'family_type_Joint Family', 'family_type_Nuclear Family',
+                    'family_type_null', 'platform_ANDROID', 'platform_IOS',
+                    'platform_Other_platforms', 'platform_WEBSITE', 'age', 'income_rs','member_id','membership']
 
                one_hot_df = pd.DataFrame(columns=features)
 
-
+               
                
                # load the encoder object from file
                with open('encoder_nri.pkl', 'rb') as f:
@@ -1141,11 +1155,12 @@ def test():
 
                one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
+               
+
                # create a new DataFrame for the one-hot encoded user
                one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
                encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
                one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
-
                
                
                #Normalize Age
@@ -1160,14 +1175,14 @@ def test():
                # Load the saved model from file using pickle
                with open('model_nri.pkl', 'rb') as f:
                     model = pickle.load(f)
-
+               
+               
                thershold=0.42
                def rescale_value(value):
                     if value <= thershold:
                          return 0.5 * (value / thershold)
                     else:
                          return 0.5 + 0.5 * ((value - thershold) / (1.0 - thershold))
-                    
                
                
                return str(rescale_value(model.predict_proba(one_hot_df)[0][1]))
