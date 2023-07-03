@@ -734,7 +734,7 @@ def test():
           # Load the saved model from file using pickle
           with open('model.pkl', 'rb') as f:
                model = pickle.load(f)          
-          print(one_hot_df)
+          
 
           return str(model.predict_proba(one_hot_df)[0][1])     
      
@@ -1167,7 +1167,7 @@ def test():
                     else:
                          return 0.5 + 0.5 * ((value - thershold) / (1.0 - thershold))
                     
-               print(one_hot_df)
+               
                
                return str(rescale_value(model.predict_proba(one_hot_df)[0][1]))
 
