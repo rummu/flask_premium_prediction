@@ -1007,7 +1007,7 @@ def test():
 
                e4=['Trade School', 'Master of Education - M.Ed.', 'B.Arch', 'B.Sc.', 'High School']
 
-               e5=['M.V.Sc.', 'B.U.M.S', 'Master of Physical Education', 'B.A.M.S.', 'Bachelor of Physical Education', 'Master of Surgery - M.S.', 'M.Sc. (Agriculture)', 'CS', 'M.D. (Homoeopathy)', 'B.M.C. / B.M.M./ B.J.M.C.', 'Doctorate of Medicine - D.M.', 'Master of Fine Arts - MFA / MVA', 'M.M.C / M.M.M / M.J.M.C', 'BVSc.', 'D.Pharma', 'B.H.M.S', 'B.Des. / B.D.', 'Bachelor of Social Work', 'Bachelor of Library Science','Bachelor of Nursing']
+               e5=['M.V.Sc.', 'B.U.M.S', 'Master of Physical Education', 'B.A.M.S.', 'Bachelor of Physical Education', 'Master of Surgery - M.S.', 'CS', 'M.D. (Homoeopathy)', 'B.M.C. / B.M.M./ B.J.M.C.', 'Doctorate of Medicine - D.M.', 'Master of Fine Arts - MFA / MVA', 'M.M.C / M.M.M / M.J.M.C', 'BVSc.', 'D.Pharma', 'B.H.M.S', 'B.Des. / B.D.', 'Bachelor of Social Work', 'Bachelor of Library Science','Bachelor of Nursing']
 
                if user['highest_education'][0] in e1:
                          user['highest_education'] = ['Education_category_1']
@@ -1175,7 +1175,6 @@ def test():
                # Load the saved model from file using pickle
                with open('model_nri.pkl', 'rb') as f:
                     model = pickle.load(f)
-               
                
                thershold=0.42
                def rescale_value(value):
