@@ -1133,6 +1133,7 @@ def test():
 
                one_hot_df = pd.DataFrame(columns=features)
 
+
                
                # load the encoder object from file
                with open('encoder_nri.pkl', 'rb') as f:
