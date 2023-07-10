@@ -115,6 +115,8 @@ def recommendationTest():
 def test1():
      return str(2)
 
+
+
 @app.route('/premium_percent',methods = ['GET','POST'])
 def test():
 
@@ -443,7 +445,9 @@ def test():
           one_hot_df = pd.DataFrame(columns=features)
 
           
-          global encoder_model
+          # load the encoder object from file
+          with open('encoder.pkl', 'rb') as f:
+                    encoder_model = pickle.load(f)
 
           one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
@@ -463,9 +467,12 @@ def test():
           #Normalize Income_rs
           one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
 
-  
 
-          global model
+          # Load the saved model from file using pickle
+          with open('model.pkl', 'rb') as f:
+               model = pickle.load(f)          
+          
+
           return str(model.predict_proba(one_hot_df)[0][1])     
      
      else:
@@ -878,8 +885,10 @@ def test():
                one_hot_df = pd.DataFrame(columns=features)
 
                
-
-               global encoder_model_nri
+               
+               # load the encoder object from file
+               with open('encoder_nri.pkl', 'rb') as f:
+                         encoder_model = pickle.load(f)
 
                one_hot_df = one_hot_df.drop(columns=['member_id','age','income_rs','membership'])
 
@@ -887,7 +896,7 @@ def test():
 
                # create a new DataFrame for the one-hot encoded user
                one_hot_user = pd.DataFrame(columns=one_hot_df.columns)
-               encoded_data = encoder_model_nri.transform(user[columns_to_encode].fillna('null'))
+               encoded_data = encoder_model.transform(user[columns_to_encode].fillna('null'))
                one_hot_df = pd.DataFrame(encoded_data, columns=[one_hot_df.columns])
                
                
@@ -901,8 +910,9 @@ def test():
                one_hot_df['income_rs'] = np.log(user['income_rs'] + 1)
 
                # Load the saved model from file using pickle
-               global model_nri
-
+               with open('model_nri.pkl', 'rb') as f:
+                    model = pickle.load(f)
+               
                thershold=0.42
                def rescale_value(value):
                     if value <= thershold:
@@ -911,7 +921,8 @@ def test():
                          return 0.5 + 0.5 * ((value - thershold) / (1.0 - thershold))
                
                
-               return str(rescale_value(model_nri.predict_proba(one_hot_df)[0][1]))
+               return str(rescale_value(model.predict_proba(one_hot_df)[0][1]))
+
 
 
 if __name__ == "__main__":
