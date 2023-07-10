@@ -6,18 +6,84 @@ import json
 from flask_cors import CORS
 import time
 
-import matplotlib.pyplot as plt
 import urllib.parse
 pd.set_option('display.max_columns', None)
 
 app = Flask(__name__)
 CORS(app)
 
-
-
 @app.route("/")
 def home():
      return "<h1 style='color:blue'>Hello pycharm!</h1>"
+
+
+reducedUsers = pd.read_csv('reducedUsers.csv')
+dummyCols = ['marital_status', 'permanent_state', 'highest_education', 'occupation', 'caste', 'sect', 'employed', 'income', 'permanent_city']
+nanMap = dict(zip(dummyCols, [[f'{y}_{x}' for x in reducedUsers[y].astype(str).unique() if (x.endswith('nan'))] for y in dummyCols]))
+encodedUsersOneHot = {}
+
+for senderIsFemme in [True, False]: 
+    tag = ('Female' if senderIsFemme else 'Male')
+    temp = reducedUsers[(reducedUsers.gender != ('Female' if senderIsFemme else 'Male'))]
+    encodedUsersOneHot[tag] = pd.get_dummies(temp[['member_id', 'age'] + dummyCols], columns=dummyCols, dummy_na=True)
+
+    for col in dummyCols:
+        nanCols = nanMap[col]
+        dummiedCols = [x for x in encodedUsersOneHot[tag].columns if x.startswith(col)]
+        idx = np.sum(encodedUsersOneHot[tag][nanCols].values, axis=1) > 0
+        encodedUsersOneHot[tag].loc[idx, nanCols] = 0
+        
+    encodedUsersOneHot[tag] = encodedUsersOneHot[tag].astype(pd.SparseDtype("int32", 0))
+
+interest_df = pd.read_csv('interestData.csv')
+@app.route("/test_recommendation", methods=['POST'])
+def recommendationTest():
+     global reducedUsers, encodedUsersOneHot, interest_df
+     member_id = None
+     try:
+          member_id = int(request.form['member_id'])
+     except ValueError as verr:
+          return "Exception Encountered: supplied 'member_id' is not an integer!"
+     except Exception as exc:
+          return "Invalid input!"
+     
+     if (reducedUsers.member_id == member_id).sum() == 0:
+          return "Member id not in data!"
+
+     senderInfo = reducedUsers[reducedUsers.member_id == member_id].to_dict(orient='records')[0]
+     senderIsFemme = senderInfo['gender'] == 'Female'
+     senderGender = ('Female' if senderIsFemme else 'Male')
+
+     oneHotTieredUsers = encodedUsersOneHot[senderGender]
+     match_df = oneHotTieredUsers[oneHotTieredUsers.member_id.isin(interest_df[interest_df.sender_id == member_id].receiver_id)]
+     preferences = match_df.mean(axis=0)
+
+     values = []
+     cols = []
+     for category in ['marital_status', 'permanent_state', 'highest_education', 'occupation', 'caste', 'sect', 'employed']:
+          idx = [x for x in preferences.index if x.startswith(category)]
+          weight = 5**(preferences[idx].max())    
+          for tier in idx:
+               values.append(weight * preferences[tier])
+               cols.append(tier)
+
+     vector = pd.Series(data=values, index=cols)
+     ageLowerBound = match_df.age.quantile(q=0.5) if senderIsFemme else match_df.age.quantile(0.3)
+     ageUpperBound = match_df.age.quantile(q=0.8) if senderIsFemme else match_df.age.quantile(0.7)
+     # ageLowerBound, ageUpperBound = (match_df.age.quantile(q=0.4), match_df.age.quantile(q=0.6))
+     scores = oneHotTieredUsers[vector.index].dot(vector)
+     # scores -= (oneHotTieredUsers.age - preferences.age).abs()
+     scores += oneHotTieredUsers.age.between(ageLowerBound, ageUpperBound).astype(float) * 2
+     scoredUsers = pd.DataFrame({'member_id' : oneHotTieredUsers.member_id, 'score' : scores})
+
+     predictions = pd.merge(scoredUsers[['member_id', 'score']].sort_values('score', ascending=False).head(300), reducedUsers, on='member_id')
+     predictions.insert(1, 'already_liked', predictions.member_id.isin(match_df.member_id))
+
+     return {
+          'user' : senderInfo,
+          'userInterestCount' : match_df.shape[0],
+          'recommendations' : predictions.head(50)[['member_id', 'score']].to_dict(orient='records')
+          }
 
 
 @app.route('/test',methods = ['GET','POST'])
