@@ -65,7 +65,7 @@ def recommendationTest():
      try:
           withInfo = bool(request.form['withInfo'])
      except:
-          errors.append(f'Error: invalid offset using default values {withInfo}')
+          errors.append(f'Error: invalid withInfo using default values {withInfo}')
 
      if errors:
           print('Errors:\n\t')
@@ -107,7 +107,7 @@ def recommendationTest():
           'error' : errors,
           'user' : senderInfo,
           'userInterestCount' : match_df.shape[0],
-          'recommendations' : predictions[['member_id', 'score']].to_dict(orient='list')
+          'userRecommendations' : predictions[predictions.columns if withInfo else ['member_id', 'score']].to_dict(orient='records')
           }
 
 
