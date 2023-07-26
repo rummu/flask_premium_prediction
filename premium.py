@@ -9,7 +9,9 @@ import time
 import urllib.parse
 pd.set_option('display.max_columns', None)
 
-app = Blueprint('premium', __name__, template_folder='templates')
+app = Flask(__name__)
+CORS(app)
+
 
 @app.route("/")
 def home():
@@ -830,3 +832,6 @@ def test():
                
                return str(rescale_value(model.predict_proba(one_hot_df)[0][1]))
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
