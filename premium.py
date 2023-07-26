@@ -1,4 +1,4 @@
-from flask import Flask ,render_template , request, Blueprint
+from flask import Flask ,render_template , request, jsonify
 import pandas as pd
 import numpy as np
 import pickle
@@ -25,6 +25,19 @@ def test1():
      return str(2)
 
 
+@app.route('/mail',methods = ['GET','POST'])
+def receive_data():
+
+        # Assuming the request data is in JSON format
+        request_data = request.form['body']
+        data = json.loads(data)
+       
+        name = data['name']
+        email = data['email']
+        message = data['message']
+
+        print(name,email,message)
+        return "<h1 style='color:blue'>Success</h1>"
 
 @app.route('/premium_percent',methods = ['GET','POST'])
 def test():
